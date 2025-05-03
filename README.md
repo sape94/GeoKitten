@@ -537,14 +537,14 @@ When adding new functionality, consider the following:
 3. Is it well-documented with docstrings and example usage?
 4. Are there comprehensive tests covering the new functionality?
 
-### Implementing Support for GeoPolar
+### Implementing Support for GeoPolars
 
-If you're interested in implementing GeoPolar support:
+If you're interested in implementing GeoPolars support:
 
 1. Create a new adapter class that implements the `GeoDataFrameAdapter` interface
-2. Update the `_InputTransformer` to detect and handle GeoPolar dataframes
+2. Update the `_InputTransformer` to detect and handle GeoPolars dataframes
 3. Add tests to ensure compatibility with existing functionality
-4. Update documentation to include GeoPolar examples
+4. Update documentation to include GeoPolars examples
 
 ## Documentation
 
