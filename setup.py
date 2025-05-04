@@ -11,7 +11,7 @@ setup(
     description="Tools for geospatial data processing and visualization",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/sape94/geokitten",
+    url="https://github.com/sape94/GeoKitten",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -19,7 +19,7 @@ setup(
         "Operating System :: OS Independent",
         "Topic :: Scientific/Engineering :: GIS",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.9",
     install_requires=[
         "geopandas>=0.9.0",
         "numpy>=1.23.4",
