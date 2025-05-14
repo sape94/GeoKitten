@@ -32,7 +32,7 @@ A Python package for standardizing, converting, and visualizing geospatial data 
   - [Testing](#testing)
   - [Guidelines for Contributors](#guidelines-for-contributors)
   - [Adding New Features](#adding-new-features)
-  - [Implementing Support for GeoPolar](#implementing-support-for-geopolar)
+  - [Implementing Support for GeoPolars](#implementing-support-for-geopolars)
 - [Documentation](#documentation)
 - [License](#license)
 - [Author](#author)
