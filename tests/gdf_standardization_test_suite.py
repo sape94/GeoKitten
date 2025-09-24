@@ -687,9 +687,45 @@ class TestInputTransformer(unittest.TestCase):
         result = transformer._remove_z_coord(multi_polygon)
         self.assertIsInstance(result, MultiPolygon)
 
-    def test_remove_geni(self):
+    def test_remove_geni_with_None(self):
         """
-        Test _remove_geni method.
+        Test _remove_geni method with None input.
+
+        Verifies that:
+        1. For empty geometries: Returns an empty geometry
+        2. For simple Polygons: Returns the original Polygon unchanged
+        3. For Polygons with holes: Removes all holes
+        4. For MultiPolygons: Removes holes from all component Polygons
+        """
+        transformer = _InputTransformer(self.gdf)
+
+        # Test with empty geometry
+        empty = None
+        result = transformer._remove_geni(empty)
+        self.assertTrue(result.is_empty)
+
+        # Test with simple Polygon
+        simple = Polygon([(0, 0), (0, 1), (1, 1), (1, 0)])
+        result = transformer._remove_geni(simple)
+        self.assertEqual(result, simple)  # Should be unchanged
+
+        # Test with Polygon with hole
+        exterior = [(0, 0), (0, 10), (10, 10), (10, 0), (0, 0)]
+        hole = [(3, 3), (3, 7), (7, 7), (7, 3), (3, 3)]
+        with_hole = Polygon(exterior, [hole])
+        result = transformer._remove_geni(with_hole)
+        self.assertEqual(len(result.interiors), 0)  # No more holes
+
+        # Test with MultiPolygon
+        multi = MultiPolygon([with_hole, simple])
+        result = transformer._remove_geni(multi)
+        self.assertIsInstance(result, MultiPolygon)
+        for polygon in result.geoms:
+            self.assertEqual(len(polygon.interiors), 0)  # No holes
+            
+    def test_remove_geni_with_empty(self):
+        """
+        Test _remove_geni method with Emty polygon input.
 
         Verifies that:
         1. For empty geometries: Returns an empty geometry
