@@ -654,7 +654,40 @@ class TestInputTransformer(unittest.TestCase):
             for coord in polygon.exterior.coords:
                 self.assertEqual(len(coord), 2)
 
-    def test_remove_z_coord(self):
+    def test_remove_z_coord_None(self):
+        """
+        Test _remove_z_coord method.
+
+        Verifies that:
+        1. For empty geometries: Returns an empty geometry
+        2. For Points: Returns the original Point (not processed)
+        3. For Polygons: Removes Z coordinates
+        4. For MultiPolygons: Removes Z coordinates from all Polygons
+        """
+        transformer = _InputTransformer(self.gdf)
+
+        # Test with empty geometry
+        empty = None
+        result = transformer._remove_z_coord(empty)
+        self.assertTrue(result.is_empty)
+
+        # Test with Point
+        point = Point(0, 0, 1)
+        result = transformer._remove_z_coord(point)
+        self.assertEqual(result, point)  # Points are not processed
+
+        # Test with Polygon
+        polygon = Polygon(
+            [(0, 0, 1), (0, 1, 1), (1, 1, 1), (1, 0, 1), (0, 0, 1)])
+        result = transformer._remove_z_coord(polygon)
+        self.assertIsInstance(result, Polygon)
+
+        # Test with MultiPolygon
+        multi_polygon = MultiPolygon([polygon])
+        result = transformer._remove_z_coord(multi_polygon)
+        self.assertIsInstance(result, MultiPolygon)
+        
+    def test_remove_z_coord_empty(self):
         """
         Test _remove_z_coord method.
 
