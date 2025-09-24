@@ -1,0 +1,32 @@
+# .gitattributes file for GeoKitten
+
+# Mark Python as the primary language
+*.py linguist-language=Python
+
+# Mark generated HTML files as generated content (exclude from language stats)
+*.html linguist-generated=true
+
+# Mark documentation files as documentation (exclude from language stats)
+*.md linguist-documentation=true
+*.rst linguist-documentation=true
+
+# Mark configuration files as generated/config (exclude from language stats)
+*.yml linguist-generated=true
+*.yaml linguist-generated=true
+setup.py linguist-language=Python
+setup.cfg linguist-generated=true
+pyproject.toml linguist-generated=true
+
+# Mark test files appropriately but keep them as Python
+tests/*.py linguist-language=Python
+
+# If you have any sample data files, mark them as data
+*.geojson linguist-generated=true
+*.kml linguist-generated=true
+*.shp linguist-generated=true
+*.dbf linguist-generated=true
+*.shx linguist-generated=true
+*.prj linguist-generated=true
+
+# Mark any Jupyter notebooks (if you have them)
+*.ipynb linguist-documentation=true
