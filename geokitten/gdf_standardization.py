@@ -568,8 +568,10 @@ class _InputTransformer:
         Returns:
             Union[Polygon, MultiPolygon, Point, None]: The geometry without Z-coordinates.
         """
-        if geom.is_empty:
-            return geom
+        if geom is None:
+            return Polygon()  # Return empty Polygon for None input
+        elif geom.is_empty:
+            return geom  # Return the empty geometry as-is
         elif isinstance(geom, (Polygon, LinearRing)):
             return self._remove_z_coord_from_polygon(geom)
         elif isinstance(geom, (MultiPolygon, GeometryCollection)):
@@ -591,7 +593,7 @@ class _InputTransformer:
         if geom is None:
             return Polygon()  # Return empty Polygon for None input
         elif geom.is_empty:
-          return geom  # Return the empty geometry as-is
+            return geom  # Return the empty geometry as-is
         elif isinstance(geom, Polygon):
             return _GeniRemover(geom).trnsf_pol_all_geni()
         elif isinstance(geom, MultiPolygon):
