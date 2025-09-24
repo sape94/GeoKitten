@@ -588,10 +588,10 @@ class _InputTransformer:
         Returns:
             Union[Polygon, MultiPolygon]: The geometry without "geni".
         """
-       if geom is None:
-           return Polygon()  # Return empty Polygon for None input
-       elif geom.is_empty:
-           return geom  # Return the empty geometry as-is
+        if geom is None:
+            return Polygon()  # Return empty Polygon for None input
+        elif geom.is_empty:
+          return geom  # Return the empty geometry as-is
         elif isinstance(geom, Polygon):
             return _GeniRemover(geom).trnsf_pol_all_geni()
         elif isinstance(geom, MultiPolygon):
@@ -678,7 +678,7 @@ def _get_interior_point(geometry) -> Point:
     except Exception:
         try:
             return geometry.representative_point()
-        except:
+        except Exception:
             return Point()
 
 

@@ -182,7 +182,8 @@ class TestGeoDataFrameAdapter(unittest.TestCase):
         self.assertEqual(result.crs, "EPSG:3857")
 
         # Test with inplace
-        original_crs = self.adapter.crs
+        #original_crs = self.adapter.crs
+        self.adapter.crs
         result = self.adapter.to_crs("EPSG:4326", inplace=True)
         self.assertEqual(self.adapter.crs, "EPSG:4326")
         self.assertTrue(result.equals(self.adapter.geodataframe))

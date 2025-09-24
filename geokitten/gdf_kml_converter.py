@@ -150,7 +150,7 @@ class KMLsToGeodataframe:
         if kml_gdf is not None:
             kml_gdf_list.append(kml_gdf)
             if verbose:
-                print(f"\t✓ Successfully read.")
+                print("\t✓ Successfully read.")
         return kml_gdf_list
 
     def _concat_kml_gdf_list(self,
@@ -170,7 +170,7 @@ class KMLsToGeodataframe:
         consolidated_gdf = gpd.GeoDataFrame(consolidated_gdf,
                                             crs=kml_gdf_list[0].crs)
         if verbose:
-            print(f"✓✓✓ KML files consolidated successfully.")
+            print("✓✓✓ KML files consolidated successfully.")
         return consolidated_gdf
 
     def consolidate(self,

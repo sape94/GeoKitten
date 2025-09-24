@@ -1370,8 +1370,8 @@ class TestIntegration:
         assert any(isinstance(child, folium.features.GeoJson)
                    for child in map_obj._children.values())
         # Verify tooltip columns are present
-        geo_json_layers = [child for child in map_obj._children.values()
-                           if isinstance(child, folium.features.GeoJson)]
+        #geo_json_layers = [child for child in map_obj._children.values()
+        #                   if isinstance(child, folium.features.GeoJson)]
 
     @pytest.mark.skipif(not os.path.exists(os.path.join("tests", "tests_files", "inputs", "html_generator_test_file.shp")),
                         reason="Test file html_generator_test_file.shp not found")
@@ -1412,8 +1412,8 @@ class TestIntegration:
         assert any(isinstance(child, cm.LinearColormap)
                    for child in map_obj._children.values())
         # Verify tooltip columns are present
-        geo_json_layers = [child for child in map_obj._children.values()
-                           if isinstance(child, folium.features.GeoJson)]
+        #geo_json_layers = [child for child in map_obj._children.values()
+        #                   if isinstance(child, folium.features.GeoJson)]
 
     @pytest.mark.skipif(not os.path.exists(os.path.join("tests", "tests_files", "inputs", "html_generator_test_file.shp")),
                         reason="Test file html_generator_test_file.shp not found")
@@ -1447,7 +1447,7 @@ class TestIntegration:
                                                        output_file='html_test_temp_dir/continuous_map.html')
             os.rmdir('html_test_temp_dir')
         # Verify the categorical map has the legend HTML injected
-        categorical_html = str(categorical_map.get_root())
+        #categorical_html = str(categorical_map.get_root())
         # Verify the continuous map has a colormap added
         assert any(isinstance(child, cm.LinearColormap)
                    for child in continuous_map._children.values())

@@ -307,7 +307,8 @@ class Test_KMLsProperFormat:
         Ensures that a new directory is created if it does not exist.
         """
         new_dir = str(tmp_path / "new_output")
-        formatter = _KMLsProperFormat(sample_gdf, new_dir, verbose=False)
+        #formatter = _KMLsProperFormat(sample_gdf, new_dir, verbose=False)
+        _KMLsProperFormat(sample_gdf, new_dir, verbose=False)
         assert os.path.exists(new_dir)
 
     @patch.object(_KMLsProperFormat, '_generate_kml_structure')
@@ -645,7 +646,8 @@ class TestKMLsToKMLsProperFormat:
         """
         new_dir = str(tmp_path / "new_output")
         with patch('geokitten.gdf_kml_converter.KMLsToGeodataframe'):
-            converter = KMLsToKMLsProperFormat(input_dir, new_dir)
+            #converter = KMLsToKMLsProperFormat(input_dir, new_dir)
+            KMLsToKMLsProperFormat(input_dir, new_dir)
             assert os.path.exists(new_dir)
 
     @patch('geokitten.gdf_kml_converter._KMLsProperFormat')

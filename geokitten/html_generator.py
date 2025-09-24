@@ -1036,7 +1036,8 @@ class InteractiveCategoricalHtmlMap:
         folium.Map
             The updated map object with added layers, controls, and title.
         """
-        gdf = self.validator.gdf
+        #gdf = self.validator.gdf
+        self.validator.gdf
         tooltip_columns = self.validator.tooltip_columns
         m = self.map_creator._add_choropleth_layer(
             m, style_function, tooltip_columns)
@@ -1364,7 +1365,8 @@ class InteractiveContinuousHtmlMap:
         folium.Map
             The updated map object with layers and controls
         """
-        gdf = self.validator.gdf
+        #gdf = self.validator.gdf
+        self.validator.gdf
         tooltip_columns = self.validator.tooltip_columns
         m = self.map_creator._add_choropleth_layer(
             m, style_function, tooltip_columns)
