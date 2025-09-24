@@ -728,7 +728,7 @@ class StandardGeodataframe(gpd.GeoDataFrame):
     def from_file(cls,
                   file_path,
                   crs="EPSG:4326",
-                  remove_geni=True,
+                  remove_geni=False,
                   **kwargs):
         """
         Create a StandardGeodataframe from a file.
@@ -751,7 +751,7 @@ class StandardGeodataframe(gpd.GeoDataFrame):
     def from_geodataframe(cls,
                           gdf,
                           crs="EPSG:4326",
-                          remove_geni=True):
+                          remove_geni=False):
         """
         Create a StandardGeodataframe from an existing GeoDataFrame.
 
@@ -770,7 +770,7 @@ class StandardGeodataframe(gpd.GeoDataFrame):
     def __init__(self,
                  *args,
                  crs="EPSG:4326",
-                 remove_geni=True,
+                 remove_geni=False,
                  **kwargs):
         """
         Initialize the StandardGeodataframe.
