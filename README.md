@@ -2,6 +2,8 @@
 
 A Python package for standardizing, converting, and visualizing geospatial data with an emphasis on simplicity and extensibility.
 
+![GeoKitten Iroh the cal](assets/images/Geokitten.png)
+
 ## Table of Contents
 
 - [Features](#features)
@@ -105,12 +107,12 @@ The `StandardGeodataframe` class extends the GeoPandas GeoDataFrame to provide s
 #### Constructor
 
 ```python
-StandardGeodataframe(gdf_input, crs="EPSG:4326", remove_geni=True, **kwargs)
+StandardGeodataframe(gdf_input, crs="EPSG:4326", remove_geni=False, **kwargs)
 ```
 
 - **gdf_input**: Input GeoDataFrame or file path to be standardized
 - **crs**: Coordinate reference system to standardize to (defaults to "EPSG:4326")
-- **remove_geni**: Whether to remove "geni" (holes) from polygons (defaults to True)
+- **remove_geni**: Whether to remove "geni" (holes) from polygons (defaults to False)
 - **kwargs**: Additional arguments to pass to GeoDataFrame constructor
 
 #### Class Methods
@@ -118,27 +120,27 @@ StandardGeodataframe(gdf_input, crs="EPSG:4326", remove_geni=True, **kwargs)
 ##### `from_file`
 
 ```python
-StandardGeodataframe.from_file(file_path, crs="EPSG:4326", remove_geni=True, **kwargs)
+StandardGeodataframe.from_file(file_path, crs="EPSG:4326", remove_geni=False, **kwargs)
 ```
 
 Creates a StandardGeodataframe from a file path.
 
 - **file_path**: Path to the geospatial file (shp, geojson, etc.)
 - **crs**: Target CRS (defaults to "EPSG:4326")
-- **remove_geni**: Whether to remove polygon holes (defaults to True)
+- **remove_geni**: Whether to remove polygon holes (defaults to False)
 - **kwargs**: Additional arguments for gdp.read_file()
 
 ##### `from_geodataframe`
 
 ```python
-StandardGeodataframe.from_geodataframe(gdf, crs="EPSG:4326", remove_geni=True)
+StandardGeodataframe.from_geodataframe(gdf, crs="EPSG:4326", remove_geni=False)
 ```
 
 Creates a StandardGeodataframe from an existing GeoDataFrame.
 
 - **gdf**: Input GeoDataFrame
 - **crs**: Target CRS (defaults to "EPSG:4326")
-- **remove_geni**: Whether to remove polygon holes (defaults to True)
+- **remove_geni**: Whether to remove polygon holes (defaults to False)
 
 #### Methods
 
@@ -158,14 +160,14 @@ Calculates a point that is guaranteed to be inside each geometry.
 ##### `substract_overlapping_geometries`
 
 ```python
-substract_overlapping_geometries(column_name, args, remove_geni=True, inplace=False)
+substract_overlapping_geometries(column_name, args, remove_geni=False, inplace=False)
 ```
 
 Subtracts overlapping geometries based on specified criteria.
 
 - **column_name**: Name of the column containing identifiers for geometries
 - **args**: Either a tuple ([target_ids], [subtractor_ids]) or a dictionary {target_id: [subtractor_ids]}
-- **remove_geni**: Whether to remove holes created by subtraction (defaults to True)
+- **remove_geni**: Whether to remove holes created by subtraction (defaults to False)
 - **inplace**: Whether to modify the GeoDataFrame in place (defaults to False)
 - **Returns**: Modified GeoDataFrame if inplace=False
 
@@ -311,6 +313,10 @@ Generates a categorical choropleth map and saves it as an HTML file.
 - **output_file**: Filename to save the HTML map (defaults to 'categorical_map.html')
 - **Returns**: The created folium.Map object
 
+**Example Output:**
+
+![GeoKitten Interactive Map Example](assets/images/geokitten_interactive_categorical_map.png)
+
 #### InteractiveContinuousHtmlMap
 
 Creates continuous interactive choropleth maps.
@@ -345,6 +351,10 @@ Generates a continuous choropleth map and saves it as an HTML file.
 - **legend_name**: Name for the legend (defaults to None)
 - **output_file**: Filename to save the HTML map (defaults to 'continuous_map.html')
 - **Returns**: The created folium.Map object
+
+**Example Output:**
+
+![GeoKitten Interactive Map Example](assets/images/geokitten_interactive_continuos_map.png)
 
 ## Usage Examples
 
